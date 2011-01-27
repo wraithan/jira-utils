@@ -17,8 +17,7 @@
 
 (defun get-list-of-issues ()
   (iter (for element in (rest (get-issues-with-description)) by 'cddr)
-	(collect (get-value "key" element) into retval)
-	(finally (return retval))))
+	(collect (get-value "key" element))))
 
 (defun get-value (key data)
   (getf (rest (assoc key data :test 'string=)) :string))
