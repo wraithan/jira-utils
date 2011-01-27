@@ -19,7 +19,7 @@
 (defun get-list-of-issues ()
   (iter (for element in (get-issues-with-description))
 	(for n from 0)
-	(if (oddp n)
+	(when (oddp n)
 	    (collect (nth 2 (nth 3 element)) into retval))
 	(finally (return retval))))
 
