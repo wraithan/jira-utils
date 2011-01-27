@@ -11,10 +11,9 @@
 	     `(:string ,username :string ,password)))
 
 (defun get-issues-with-description ()
-  (let ((auth-code (get-auth-code)))
-    (xrpc:call jira-url
-	       "jira1.getIssuesFromFilter"
-	       `(:string ,auth-code :string "10000"))))
+  (xrpc:call jira-url
+	     "jira1.getIssuesFromFilter"
+	     `(:string ,(get-auth-code) :string "10000")))
 
 (defun get-list-of-issues ()
   (iter (for element in (get-issues-with-description))
