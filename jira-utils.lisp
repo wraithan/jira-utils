@@ -19,5 +19,5 @@
   (iter (for element in (rest (get-issues-with-description)) by 'cddr)
 	(collect (get-value "key" element))))
 
-(defun get-value (key data &key (type 'string=))
-  (getf (rest (assoc key data :test type)) :string))
+(defun get-value (key data &key (type :string))
+  (getf (rest (assoc key data :test 'string=)) type))
