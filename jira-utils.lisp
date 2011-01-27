@@ -16,10 +16,8 @@
 	     `(:string ,(get-auth-code) :string "10000")))
 
 (defun get-list-of-issues ()
-  (iter (for element in (get-issues-with-description))
-	(for n from 0)
-	(when (oddp n)
-	    (collect (get-value "key" element) into retval))
+  (iter (for element in (rest (get-issues-with-description)) by 'cddr)
+	(collect (get-value "key" element) into retval)
 	(finally (return retval))))
 
 (defun get-value (key data)
