@@ -19,7 +19,8 @@
   (iter (for element in (get-issues-with-description))
 	(for n from 0)
 	(when (oddp n)
-	    (collect (nth 2 (nth 3 element)) into retval))
+	    (collect (get-value "key" element) into retval))
 	(finally (return retval))))
 
-
+(defun get-value (key data)
+  (getf (rest (assoc key data :test 'string=)) :string))
