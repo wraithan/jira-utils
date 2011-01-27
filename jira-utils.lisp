@@ -2,6 +2,7 @@
 
 (in-package #:jira-utils)
 
+; loads username, password and jira-url from ~/.jirarc
 (load (make-pathname :defaults (user-homedir-pathname) :name ".jirarc"))
 
 (defun get-auth-code ()
